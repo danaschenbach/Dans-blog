@@ -1,0 +1,13 @@
+{% extends "main.html" %}
+
+{% block title %} Login Welcome {% endblock %}
+
+{% block content %}
+
+  	<div>
+    	<h2>Welcome back, {{username.name.capitalize()}}</h2>
+    	<a class="newpost-link" href="/newpost">Let's Blog</a>
+    	<a class="blog-link" href="/posts">Read Posts</a>
+ 	</div>
+
+{% endblock %}

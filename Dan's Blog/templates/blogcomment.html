@@ -1,0 +1,31 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+    <div class="card card-block">
+        <h3 text-xs-center">{{post.subject |safe}}</h3>
+        <p>{{post.content.replace("\n","<br>") | safe}}</p>
+        <p><h9>Written
+            By: <b>{{post.author.capitalize()}}</b>
+            On: <b>{{post.created.strftime("%d %B, %Y")}}</b>
+            </h9>
+        </p>
+    </div>
+
+    <form method="post">
+        Blog Comment
+        <div class="form-group">
+            <textarea name="content"></textarea>
+        </div>
+        <span style="color:red">{{error}}</span><br>
+        <input class="btn btn-primary" type="submit" value="Submit">
+        <a href="/posts" class="btn btn-secondary">
+            Cancel
+        </a>
+    </form>
+
+{% endblock %}
+
+{% block sidebar %}
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+    <form method="post">
+        <label>
+            <div>Username</div>
+            <input type="text" name="username" value="{{username}}">
+        </label>
+          
+        <label>
+            <div>Password</div>
+            <input type="password" name="password" value="">
+        </label>
+
+        <div class="error">
+            {{error}}
+        </div>
+
+        <input type="submit">
+    </form>
+
+    <hr>
+
+    <a class="signup-link" href="/signup">Not a member? Signup here</a>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+    <div class="card card-block">
+        <h3>{{post.subject |safe}}</h3>
+        <p>{{post.content.replace("\n","<br>") | safe}}</p>
+        <p><h9>Written
+            By: <b>{{post.author.capitalize()}}</b>
+            On: <b>{{post.created.strftime("%d %B, %Y")}}</b></h9>></p>
+    </div>
+
+
+    <br>
+    <h3>Blog Comment</h3>
+    <form method="post">
+        <div class="form-group">
+
+            <textarea name="content">
+                {{ comment.content }}
+            </textarea>
+        </div>
+
+        <input class="btn btn-primary" type="submit" value="Post Comment">
+
+        <a href="/posts/{{post.key().id()}}" class="btn btn-secondary">
+            Cancel
+        </a>
+    </form>
+
+{% endblock %}

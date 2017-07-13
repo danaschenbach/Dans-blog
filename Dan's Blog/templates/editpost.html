@@ -1,0 +1,23 @@
+{% extends "main.html" %}
+
+{% block content %}
+<form method="post">
+    <div>
+        <label>Subject</label>
+        <input value="{{post.subject}}" name="subject">
+
+    </div>
+
+    <div>
+        <label>Content</label>
+        <textarea name="content">{{post.content}}</textarea>
+    </div>
+    <span style="color:red">{{error}}</span>
+    <br>
+    <input class="btn btn-primary" type="submit" value="Post">
+    <a href="/posts" class="btn btn-secondary">
+        Cancel
+    </a>
+</form>
+
+{% endblock %}

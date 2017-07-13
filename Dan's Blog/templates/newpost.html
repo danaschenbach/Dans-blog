@@ -1,0 +1,27 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <h2>New Post</h2>
+    <h3>What's on your mind?</h3>
+    <h3><b><i>{{username.name.capitalize()}}</i></b></h3>
+
+    <form method="post">
+        <label>
+            <div><b>Subject:</b></div>
+            <input type="text" name="subject" value="{{subject}}">
+        </label>
+
+        <label>
+            <div><b>Post Content:</b></div>
+            <textarea name="content">{{content}}</textarea>
+        </label>
+
+        <div class="error">{{error}}</div>
+
+        <input type="submit">
+    </form>
+
+            <hr>
+
+            <a class="cancel-link" href="/posts"><b>Cancel</b></a>
+{% endblock %}

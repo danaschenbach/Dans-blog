@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dan's Multi-User Blog</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Bahiana" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar" style="background-color:#32657e;">
+        <a class="navbar-brand" href="/where" style="color:black;
+            font-family:Bahiana;"><h3><i>Dan's Blog</i></h3></a>
+        <div id="navbarResponsive">
+        <ul class="nav navbar-nav" style="float:right">
+            <li class="nav-item"><a href="/posts" class="btn btn-warning">
+                Main
+            </a></li>
+            <li class="nav-item"><a href="/newpost" class="btn btn-warning">
+                New Post
+            </a></li>
+
+
+                {% if username %}
+                    <div class="nav-item">
+                        <button class="btn btn-primary" type="button">
+                            <a href="/logout">Logout</a>
+                        </button>
+                            {{username.name.capitalize()}}
+                    </div>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signup">
+                        Sign Up
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/login">
+                        Login
+                    </a>
+                    </li>
+                {% endif %}
+
+        </ul>
+        </div>
+
+    </nav>
+
+<div class="container">
+    <div class="row" style="margin-top:40px">
+        <div class="col-md-8">
+            <div class = "content">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

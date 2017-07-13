@@ -1,0 +1,37 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+{% for p in posts %}
+    <div class="card card-block">
+        <a href="/posts/{{p.key().id()}}"><h1>{{p.subject | safe}}</h1></a>
+        <p><h9>Written
+            By:<b>{{p.author}}</b>
+            On:<b>{{p.created.strftime("%d %B, %Y")}}</b></h9></p>
+        <p>{{p.content.replace("\n","<br>") | safe}}</p>
+
+        {% if p.author == logged_user %}
+            <a href="/editpost/{{p.key().id()}}">
+                <button class="btn btn-primary">
+                    Edit
+                </button>
+            </a>
+
+            <a href="/deletepost/{{p.key().id()}}">
+                <button class="btn btn-warning">
+                    Delete
+                </button>
+            </a>
+
+        {% endif %}
+
+        <a href="/blogcomment/{{p.key().id()}}">
+            <button class="btn btn-info">
+                Comment
+            </button>
+        </a>
+
+    </div>
+{% endfor %}
+
+{% endblock %}

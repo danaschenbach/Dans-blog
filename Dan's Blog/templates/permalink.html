@@ -1,0 +1,72 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <div class="card card-block">
+        <h3 class="card-title text-xs-center">{{post.subject |safe}}</h3>
+        <p class="card-text">{{post.content.replace("\n","<br>") | safe}}</p>
+        <p class="card-text"><h9>Written
+                By: <b>{{post.author}}</b>
+                On: <b>{{post.created.strftime("%d %B, %Y")}}</b>
+            </h9></p>
+
+        {% if post.author == logged_user %}
+        <a href="/editpost/{{post.key().id()}}">
+            <button class="btn btn-primary pull-left">
+                Edit
+            </button>
+        </a>
+
+
+        <button class="btn btn-error" data-toggle="modal"
+                    data-target="#deletePost">
+            Delete
+        </button>
+        {% endif %}
+
+    <a href="/blogcomment/{{post.key().id()}}">
+        <button class="btn btn-info">
+            Comment
+        </button>
+    </a>
+    <a href="/likepost/{{post.key().id()}}">
+        <button id="likebutton" class="btn btn-info">
+            Like {{post.number_of_likes()}}
+        </button>
+    </a>
+    </div>
+
+    <br>
+
+
+    {% if comments %}
+
+        <h3>Blog Comments</h3>
+        <br>
+        {% for c in comments %}
+
+            <b>{{c.author.capitalize()}} Wrote: </b>
+            <div class="card card-block comment">
+                <p>{{c.content.replace("\n","<br>") | safe}}</p>
+                <p><h9>On:<b>{{c.created.strftime("%d %B, %Y")}}</b></h9></p>
+            </div>
+
+            {% if c.author == logged_user %}
+                <a href="/editcomment/{{c.key().id()}}">
+                    <button class="btn btn-primary pull-left">
+                        Edit
+                    </button>
+                </a>
+
+                <a href="/deletecomment/{{c.key().id()}}">
+                    <button class="btn btn-warning">
+                        Delete
+                    </button>
+                </a>
+
+                <br><br>
+       
+            {% endif %}
+        {% endfor %}
+
+    {% endif %}
+{% endblock %}
