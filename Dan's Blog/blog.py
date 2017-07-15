@@ -197,7 +197,7 @@ class Login(BlogHandler):
         password = self.request.get('password')
 
         u = User.login(username, password)
-        if u:
+        if u == User.by_id:
             self.login_cookie(u)
             self.redirect('/welcome2')
         else:
@@ -408,6 +408,9 @@ class LikePost(BlogHandler):
         if not self.user:
             return self.redirect('/login')
         post = Post.get_by_id(int(post_id))
+        if not post:
+            return self.error(404)
+          
         user_id = self.user.key().id()
 
         if post.author == self.user.name:
