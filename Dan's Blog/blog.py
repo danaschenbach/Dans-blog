@@ -197,7 +197,7 @@ class Login(BlogHandler):
         password = self.request.get('password')
 
         u = User.login(username, password)
-        if u == User.by_id:
+        if u:
             self.login_cookie(u)
             self.redirect('/welcome2')
         else:
