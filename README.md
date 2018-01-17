@@ -1,6 +1,6 @@
-##Welcome to Dan's Blog.
+## Welcome to Dan's Blog.
 
-###You will first need to do a couple of things to get up and running:
+### You will first need to do a couple of things to get up and running:
 * 1st: Download all files contained in Dan's Blog
 * 2nd: Locate where you saved the files and copy the address
 * 3rd: Open your command prompt and type in 'cd' + the address of files
